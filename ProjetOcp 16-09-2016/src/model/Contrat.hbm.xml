@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 9, 2016 9:53:31 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="model.Contrat" table="CONTRAT">
+        <id name="id_contrat" type="int">
+            <column name="ID_CONTRAT" />
+            <generator class="increment" />
+        </id>
+        <property name="nom_contrat" type="java.lang.String">
+            <column name="NOM_CONTRAT" />
+        </property>
+        <property name="date_Creation" type="java.util.Date">
+            <column name="DATE_CREATION" />
+        </property>
+        <property name="statut" type="boolean">
+            <column name="STATUT" />
+        </property>
+        <property name="date_debut" type="java.util.Date">
+            <column name="DATE_DEBUT" />
+        </property>
+        <property name="date_fin" type="java.util.Date">
+            <column name="DATE_FIN" />
+        </property>
+        <property name="montant" type="float">
+            <column name="MONTANT" />
+        </property>
+        <property name="intitule_projet" type="java.lang.String">
+            <column name="INTITULE_PROJET" />
+        </property>
+        <property name="mode_reglement" type="java.lang.String">
+            <column name="MODE_REGLEMENT" />
+        </property>
+        <property name="incoterm">
+            <column name="INCOTERM" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="type">12</param>
+                <param name="enumClass">model.Incoterm</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="objet_vente" type="java.lang.String">
+            <column name="OBJET_VENTE" />
+        </property>
+       
+        <property name="penalties" type="float">
+            <column name="PENALTIES" />
+        </property>
+        <many-to-one name="emp" class="model.Employe" fetch="join">
+            <column name="ID_EMP" />
+        </many-to-one>
+        <many-to-one name="model" class="model.ModelContrat" fetch="join">
+            <column name="ID_MODEL" />
+        </many-to-one>
+        <many-to-one name="fourn" class="model.Fournisseur" fetch="join">
+            <column name="ID_FOURN" />
+        </many-to-one>
+        <set name="clauses" table="CLAUSE" inverse="false" lazy="true">
+            <key>
+                <column name="ID_CONTRAT" />
+            </key>
+            <one-to-many class="model.Clause" />
+        </set>
+        <set name="val" table="VALIDATION" inverse="false" lazy="true">
+            <key>
+                <column name="ID_CONTRAT" />
+            </key>
+            <one-to-many class="model.Validation" />
+        </set>
+    </class>
+</hibernate-mapping>

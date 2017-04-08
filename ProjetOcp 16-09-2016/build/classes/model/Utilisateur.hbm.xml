@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 26, 2016 3:32:30 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="model.Utilisateur" table="UTILISATEUR">
+        <id name="id_user" type="int">
+            <column name="ID_USER" />
+            <generator class="increment" />
+        </id>
+        <property name="nom" type="java.lang.String">
+            <column name="NOM" />
+        </property>
+        <property name="prenom" type="java.lang.String">
+            <column name="PRENOM" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="telephone" type="java.lang.String">
+            <column name="TELEPHONE" />
+        </property>
+        <property name="adresse" type="java.lang.String">
+            <column name="ADRESSE" />
+        </property>
+        <property name="activated" type="java.lang.Boolean">
+            <column name="ACTIVATED" />
+        </property>
+        <set name="msg" table="MESSAGE" inverse="false" lazy="true">
+            <key>
+                <column name="ID_SENDBY" />
+            </key>
+            <one-to-many class="model.Message" />
+        </set>
+    </class>
+</hibernate-mapping>

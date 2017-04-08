@@ -1,0 +1,30 @@
+<html>
+<head>
+
+</head>
+
+
+<div ng-app="myApp">
+
+
+<div class="logo"></div>
+<div class="login-block">
+    <h1>Login </h1>
+    {{message}}
+<form  name="myForm"  ng-submit="connexion()">
+
+<input type="text" placeholder="username" name="login" id="username" required ng-model="t.login">
+
+<input type="password" placeholder="password"  name="password" id="password" ng-model="t.password">
+<input type="submit"  value="Login"  >
+</form>
+
+
+</div>
+<a ui-serf="index">index</a>
+
+</div>
+
+</html>
+
+

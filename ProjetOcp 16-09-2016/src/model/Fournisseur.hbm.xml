@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 26, 2016 3:32:30 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <joined-subclass name="model.Fournisseur" extends="model.Utilisateur" table="FOURNISSEUR" lazy="false">
+        <key>
+            <column name="ID_USER" />
+        </key>
+        <property name="nomSociete" type="java.lang.String">
+            <column name="NOMSOCIETE" />
+        </property>
+        <property name="adresseSoc" type="java.lang.String">
+            <column name="ADRESSESOC" />
+        </property>
+        <property name="emailSoc" type="java.lang.String">
+            <column name="EMAILSOC" />
+        </property>
+        <set name="contrats" table="CONTRAT" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="ID_FOURN" />
+            </key>
+            <one-to-many class="model.Contrat" />
+        </set>
+        <property name="telSoc" type="java.lang.String">
+            <column name="TELSOC" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>
